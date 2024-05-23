@@ -1,0 +1,35 @@
+package com.stackroute.streams;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class PlayerService {
+	
+	private static List<Player> playerList;
+
+	public static void main(String[] args) {
+		playerList = List.of(new Player("Virat", 55, 6000, 150, new Country("IN", "India")), new Player("Dhoni", 110, 8000, 120, new Country("IN", "India")),
+				new Player("Ponting", 105, 5500, 55, new Country("AU", "Australia")),
+				new Player("Hayden", 45, 5000, 105, new Country("AU", "Australia")),
+				new Player("Jonty", 49, 4000, 60, new Country("SA", "SouthAfrica")),
+				new Player("Duminy", 75, 4500, 125, new Country("SA", "SouthAfrica")),
+				new Player("Rahul", 25, 3000, 75, new Country("IN", "India")));
+		Map<Country, List<Player>> players= new PlayerService().getPlayersByCountry(playerList);
+		System.out.println(players);
+
+
+	}
+	
+	public Map<Country, List<Player>> getPlayersByCountry(List<Player> batsmans) {
+		if (batsmans != null && !batsmans.isEmpty()) {
+			return batsmans.stream().collect(Collectors.groupingBy(Player::getCountry));
+		} else {
+			return Collections.emptyMap();
+		}
+	}
+	
+
+}

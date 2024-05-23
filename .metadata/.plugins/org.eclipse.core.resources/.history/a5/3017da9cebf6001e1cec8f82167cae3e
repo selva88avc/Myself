@@ -1,0 +1,25 @@
+package com.stackroute.collections;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlayerListService {
+	private ArrayList<Player> players = new ArrayList<Player>();
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	public void addPlayersToList(Player player) {
+		players.add(player);
+	}
+	public ArrayList<Player> getPlayerList() {
+		return players;
+	}
+	public List<Player> getPlayerListSortedByNameIgnoringCaseInAscendingOrder() {
+		getPlayerList();
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

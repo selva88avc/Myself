@@ -1,0 +1,9 @@
+package com.stackroute.collections;
+
+public class dd {
+
+}
+git remote add origin https://gitlab.stackroute.in/Selvakumar.Ganesan2/sample.git
+git add .
+git commit -m "Initial commit"
+git push -u origin main

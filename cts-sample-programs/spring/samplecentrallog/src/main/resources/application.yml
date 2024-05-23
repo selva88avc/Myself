@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: log_stack_cts
+    
+server:
+  port: 9090
+  
+logging:
+  file:
+    name: D:/centrallog/logs/application.log

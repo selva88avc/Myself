@@ -1,0 +1,40 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: samplegeway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"
+      routes:
+        # SockJS route
+        - id: blog-service-route1
+          uri: http://localhost:8181
+          predicates:
+            - Path=/api/v1/blog/**
+        # Normal Websocket route
+        - id: blog-service-route2
+          uri: http://localhost:8181
+          predicates:
+            - Path=/api/v1/blogs/**
+#      mvc:
+#        routes:
+#         - id: restsample
+#           uri: http://localhost:9090
+#           predicates:
+#            - Path=/passenger/**
+#         - id: bankapi
+#           uri: http://localhost:9098
+#           predicates:
+#           - Path=/account/**
+#
+#
+#
+#
+#
+#

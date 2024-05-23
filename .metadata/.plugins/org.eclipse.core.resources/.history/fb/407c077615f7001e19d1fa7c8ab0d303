@@ -1,0 +1,48 @@
+package com.stackroute.collections;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class PlayerListService {
+	private ArrayList<Player> players = new ArrayList<Player>();
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	public void addPlayersToList(Player player) {
+		players.add(player);
+	}
+	public ArrayList<Player> getPlayerList() {
+		return players;
+	}
+	public List<Player> getPlayerListSortedByNameIgnoringCaseInAscendingOrder() {
+		ArrayList<Player> players =  getPlayerList();
+		players.sort(new PlayerNameComparator());
+		return players;
+	}
+	public List<Player> getPlayerListSortedByScoreInDescendingOrder(){
+		ArrayList<Player> players =  getPlayerList();
+		players.sort(new PlayerScoreComparator());
+		return players;
+	}
+	public List<Player> getPlayerListGreaterThanFiftySortedByScoreInDescendingOrder(){
+		List<Player> players =  getPlayerList().stream().filter(player -> player.getPlayerScore()>50).sorted(new PlayerScoreComparator()).collect(Collectors.toList());
+		return players;
+	}
+	public List<Player> getPlayerListPlayedInSameMatchSortedByNameInAscendingOrder(String playerMatch){
+		List<Player> players =  getPlayerList();
+		Iterator<Player> iterator = players.iterator();
+		List<Player> filteredPlayers =  new ArrayList<Player>();
+		while(iterator.hasNext()) {
+			Player player = (Player)iterator.next();
+			if(player.getPlayerMatch().equals(playerMatch)) {
+				filteredPlayers.add(player);
+			}
+		}		
+		players.sort(new PlayerNameComparator().reversed());
+		return players; 
+	}
+}

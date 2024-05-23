@@ -1,0 +1,70 @@
+package com.stackroute.arrays;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String args[]) {
+		String[] myArray = readData();
+		System.out.println(Arrays.toString(myArray));
+		String[] reversedArray = reverseArray(myArray);
+		System.out.println(Arrays.toString(reversedArray));
+		String[] rotatedArray = rotateArray(myArray);
+		System.out.println(Arrays.toString(rotatedArray));
+		
+	}
+
+	public static String[] readData() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the length of the array:");
+		int length = s.nextInt();
+		String[] myArray = new String[length];
+		System.out.println("Enter the countries:");
+		for (int i = 0; i < length; i++) {
+			myArray[i] = s.next();
+		}
+		return myArray;
+	}
+
+	public static String[] reverseArray(String[] array) {
+		String[] reversedArray = new String[array.length];
+		int n = array.length;
+		int j = 0;
+		for (int i = n - 1; i >= 0; i--) {
+			reversedArray[j] = array[i];
+			j++;
+		}
+		return reversedArray;
+	}
+
+	public static String[] rotateArray(String[] array) {
+		String[] rotatedArray = new String[array.length];
+		int arraySize = array.length;
+		if (arraySize > 2) {
+			if (arraySize == 2) {
+				rotatedArray = reverseArray(array);
+			}
+		} else {
+			rotatedArray = array;
+		}
+		int split = arraySize / 3;
+
+		int n = array.length;
+		int j = 0;
+		for (int i = n - 1; i >= 0; i--) {
+			if (split > j) {
+				rotatedArray[j] = array[i];
+			} else {
+				if (split + split > j) {
+					rotatedArray[j] = array[i - split];
+				} else {
+					rotatedArray[j] = array[i + split];
+				}
+			}
+			j++;
+		}
+		return rotatedArray;
+	}
+
+}

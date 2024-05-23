@@ -1,0 +1,9 @@
+package com.stackroute.streams;
+
+public class Batsman {
+	private String name;
+	private int matchesPlayed;
+	private int totalRuns;
+	private int highestScore;
+	private Country country;
+}

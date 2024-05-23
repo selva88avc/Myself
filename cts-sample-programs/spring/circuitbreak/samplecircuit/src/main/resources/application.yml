@@ -1,0 +1,21 @@
+server:
+  port: 9191
+  
+resilience4j:
+  circuitbreaker:
+    instances:
+      myservice:
+        register-health-indicator: true
+        event-consumer-buffer-size: 10
+        failure-rate-threshold: 2
+        automatic-transition-from-open-to-half-open-enabled: true
+        permitted-number-of-calls-in-half-open-state: 3
+        minimum-number-of-calls: 1
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 5
+       
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+         

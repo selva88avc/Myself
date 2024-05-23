@@ -1,0 +1,9 @@
+package com.stackroute.collections;
+
+public class Player {
+private int playerId;
+private String playerName;
+private int playerScore;
+private String playerMatch;
+	
+}

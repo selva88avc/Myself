@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BatsmanServiceTests" project="exercise-td-streams-operations-batsman" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.stackroute.streams.BatsmanServiceTests" time="0.002" displayname="BatsmanServiceTests" uniqueid="[engine:junit-jupiter]/[class:com.stackroute.streams.BatsmanServiceTests]">
+    <testcase name="givenListOfBatsmanWhenSearchInputsAreNullOrEmptyThenReturnEmptyOptional" classname="com.stackroute.streams.BatsmanServiceTests" time="0.0" displayname="givenListOfBatsmanWhenSearchInputsAreNullOrEmptyThenReturnEmptyOptional()" uniqueid="[engine:junit-jupiter]/[class:com.stackroute.streams.BatsmanServiceTests]/[method:givenListOfBatsmanWhenSearchInputsAreNullOrEmptyThenReturnEmptyOptional()]"/>
+    <testcase name="givenListOfBatsmanWhenSearchedByBatsmanNameAndCountryCodeIgnoringCaseThenReturnOptionalOfBatsman" classname="com.stackroute.streams.BatsmanServiceTests" time="0.002" displayname="givenListOfBatsmanWhenSearchedByBatsmanNameAndCountryCodeIgnoringCaseThenReturnOptionalOfBatsman()" uniqueid="[engine:junit-jupiter]/[class:com.stackroute.streams.BatsmanServiceTests]/[method:givenListOfBatsmanWhenSearchedByBatsmanNameAndCountryCodeIgnoringCaseThenReturnOptionalOfBatsman()]"/>
+  </testsuite>
+</testrun>

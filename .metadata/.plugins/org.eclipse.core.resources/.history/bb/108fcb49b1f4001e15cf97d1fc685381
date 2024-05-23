@@ -1,0 +1,50 @@
+package com.stackroute.streams;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class PlayerService {
+
+	private static List<Player> playerList;
+
+	public static void main(String[] args) {
+		playerList = List.of(new Player("Virat", 55, 6000, 150, new Country("IN", "India")),
+				new Player("Dhoni", 110, 8000, 120, new Country("IN", "India")),
+				new Player("Ponting", 105, 5500, 55, new Country("AU", "Australia")),
+				new Player("Hayden", 45, 5000, 105, new Country("AU", "Australia")),
+				new Player("Jonty", 49, 4000, 60, new Country("SA", "SouthAfrica")),
+				new Player("Duminy", 75, 4500, 125, new Country("SA", "SouthAfrica")),
+				new Player("Rahul", 25, 3000, 75, new Country("IN", "India")));
+		Map<String, List<Player>> players = new PlayerService().getPlayersByCountry(playerList);
+		System.out.println(players);
+		Map<String, List<String>> playersWithGT100M = new PlayerService().getPlayerNamesByCountry(playerList);
+		System.out.println(playersWithGT100M);
+
+	}
+
+	public Map<String, List<Player>> getPlayersByCountry(List<Player> batsmans) {
+		Function<Player, String> function = player -> player.getCountry().getCountryName();
+		if (batsmans != null && !batsmans.isEmpty()) {
+			return batsmans.stream().collect(Collectors.groupingBy(function));
+		} else {
+			return Collections.emptyMap();
+		}
+	}
+
+	// Return a map with key as country name and value as List of player Names who
+	// have played more than 100 matches
+
+	public Map<String, List<String>> getPlayerNamesByCountry(List<Player> batsmans) {
+		Function<Player, String> function = player -> player.getCountry().getCountryName();
+		if (batsmans != null && !batsmans.isEmpty()) {
+			return batsmans.stream().filter(player -> player.getMatchesPlayed() > 100).collect(
+					Collectors.groupingBy(function, Collectors.mapping(Player::getPlayerName, Collectors.toList())));
+		} else {
+			return Collections.emptyMap();
+		}
+	}
+
+}

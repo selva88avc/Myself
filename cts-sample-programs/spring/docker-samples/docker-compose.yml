@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  mysqls:
+    image: mysql
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: dockdb
+      MYSQLURL: jdbc:mysql://mysqls:3306/dockdb?createDatabaseIfNotExist=true&user=root&password=password
+      
+  bankservice:
+    image: maryrani/bankapi
+    depends_on:
+     - mysqls
+    restart: on-failure
+    ports:
+      - 9098:9098
+
+  authservice:
+    image: maryrani/authappcts
+    depends_on:
+     - mysqls
+    #  - eureka-server
+    restart: on-failure
+    ports:
+      - 9094:9094
+    # environment:
+    #   EUREKAURL: http://eureka-server:8761/eureka
+
+  # eureka-server:
+  #   image: maryrani/eurekaimg
+  #   restart: on-failure
+  #   ports:
+  #     - 8761:8761

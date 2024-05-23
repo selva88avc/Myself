@@ -1,0 +1,18 @@
+package com.stackroute.collections;
+
+import java.util.ArrayList;
+
+public class PlayerListService {
+	ArrayList<Player> players = new ArrayList<Player>();
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	public void addPlayaddPlayers(Player player) {
+		players.add(player);
+	}
+	public ArrayList<Player> getPlayerList(Player player) {
+		return players;
+	}
+}

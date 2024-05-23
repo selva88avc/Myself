@@ -1,0 +1,4 @@
+FROM openjdk:17-alpine
+WORKDIR usr/src
+ADD /target/simplerest-0.0.1-SNAPSHOT.jar /usr/src/simplerest-0.0.1-SNAPSHOT.jar
+ENTRYPOINT [ "java","-jar", "simplerest-0.0.1-SNAPSHOT.jar"]
